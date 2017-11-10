@@ -1,0 +1,22 @@
+<%
+package templates
+
+func Main(w io.Writer, content func()) {
+%>
+<html>
+<head>
+    <title>Russer</title>
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.9.0/css/tachyons.min.css"/>
+</head>
+<body>
+<div class="flex">
+    <div class="w-25"></div>
+    <div class="w-50 mw6">
+    <% content() %>
+    </div>
+    <div class="w-25-ns"></div>
+</div>
+
+</body>
+</html>
+<%}%>

@@ -1,0 +1,44 @@
+<% package templates
+
+type RegisterForm struct {
+    Username string
+    Password string
+    DisplayName string
+}
+
+func Register(w io.Writer, form RegisterForm, errors map[string]string) { %>
+<% Main(w, func() { %>
+<form action="/register" method="POST">
+    <fieldset>
+    <div>
+        <label for="Username" class="db">Username</label>
+        <input name="Username" value="<%= form.Username %>" />
+        <% if s, err := errors["User.Username"]; err { %> 
+            <div class="red">
+            <%= s %>
+            </div>
+        <%}%>
+    </div>
+    <div>
+        <label for="Password" class="db">Password</label>
+        <input name="Password" type="password" value="" />
+        <% if s, err := errors["User.Password"]; err { %> 
+            <div class="red">
+            <%= s %>
+            </div>
+        <%}%>
+    </div>
+    <div>
+        <label for="DisplayName" class="db">DisplayName</label>
+        <input name="DisplayName" value="<%= form.DisplayName %>" />
+        <% if s, err := errors["User.DisplayName"]; err { %>
+            <div class="red">
+            <%= s %>
+            </div>
+        <%}%>
+    </div>
+    </fieldset>
+    <button>Register</button>
+</form>
+<% }) %>
+<%}%>

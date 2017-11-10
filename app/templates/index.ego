@@ -1,0 +1,10 @@
+<%
+package templates
+
+func Index(w io.Writer) { %>
+
+    <% Main(w, func() { %>
+        Russer
+    <% }) %>
+
+<%}%>
